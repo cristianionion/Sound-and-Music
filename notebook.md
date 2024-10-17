@@ -2,3 +2,4 @@
 
 ## 10/16/2024
 - I introduced myself in the class Zulip.
+- I completed part 1 of clipped in python
