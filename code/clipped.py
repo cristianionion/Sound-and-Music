@@ -1,6 +1,7 @@
 import scipy.io.wavfile as wav
 import numpy as np
 import sounddevice as REC
+from playsound import playsound
 
 
 ## PART 1
@@ -39,3 +40,12 @@ clipped_sine_wave = np.clip(clipped_sine_wave,-8192,8192)
 
 
 wav.write("./code/clipped.wav",sample_rate,clipped_sine_wave.astype(np.int16))
+
+
+## PART 3
+
+# play the sound
+
+playsound('./code/sine.wav')
+
+playsound('./code/clipped.wav')
