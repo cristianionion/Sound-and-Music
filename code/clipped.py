@@ -6,7 +6,7 @@ import sounddevice as REC
 ## PART 1
 
 # amplitude
-amplitude = 1/4
+amplitude = 32767/4
 
 # duration (seconds)
 duration = 1
@@ -27,3 +27,7 @@ wav.write("./code/sine.wav",sample_rate,sine_wave.astype(np.int16))
 
 
 ## PART 2
+
+# amplitude
+#amplitude = 1/2
+
