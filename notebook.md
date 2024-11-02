@@ -13,3 +13,8 @@
 - Looked into the pydub library
 - Started Adaptive Tone Control
 
+## 11/1/2024
+- Created adaptive_tone_control.py which adjusts a D1D6D8.wav using Bart Massey's fft code
+- Visualized how the compression affected my D1D6D8.wav in Audacity
+- Explored more of Audacity
+- TODO: create different fft compressions to see what gives better results

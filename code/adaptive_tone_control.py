@@ -1,9 +1,11 @@
 import scipy.io.wavfile as wav
-from scipy.fft import fft
+from scipy.fft import fft, rfft, irfft
 import numpy as np
 import sounddevice as REC
 from playsound import playsound
 from pydub import AudioSegment
+from scipy import signal
+from scipy.io import wavfile
 
 
 
@@ -49,26 +51,41 @@ Ds.export("./code/notes/D1D6D8.wav",format="wav")
 #print(len(Ds)) # 2000
 
 
+# convert AudioSegment to np.array
+
+Ds = np.array(Ds.get_array_of_samples())
+
+
+### Using Code From Bart Massey https://github.com/pdx-cs-sound/fft-band-demo/blob/main/fft.py
+# Just to visualize in Audacity how that code adjusts my D1D6D8 file
+
+
 length = 2000
 blocks = np.array_split(Ds,len(Ds)//length)
 
 
+window = signal.windows.blackmanharris(length,sym=False)
+freqs = np.array([rfft(window * b) for b in blocks])
 
-"""
-D1 = AudioSegment.from_wav("./code/notes/D1.wav")
-D6 = AudioSegment.from_wav("./code/notes/D6.wav")
-D8 = AudioSegment.from_wav("./code/notes/D8.wav")
+# Convert FFT freqs to bands.
+bin_width = 48000 / 32.0 / 2.0
+bin_mid = round(300 / bin_width)
+bin_hi = round(2000 / bin_width)
+bands = np.array(np.array([
+    np.sum(np.abs(fs[:bin_mid])),
+    np.sum(np.abs(fs[bin_mid:bin_hi])),
+    np.sum(np.abs(fs[bin_hi:])),
+]) for fs in freqs)
 
+# Play the output of inverse FFT of freqs.
+ifs = np.concatenate([irfft(fs) for fs in freqs])
+wavfile.write("./code/notes/output.wav", 48000, ifs)
 
-C4E4G4 = C4+E4+G4
-C4E4G4.export("./code/notes/C4E4G4.wav", format="wav")
+#playsound("./code/notes/output.wav")
 
+playsound("./code/notes/D1D6D8.wav")
 
-playsound('./code/notes/C4E4G4.wav')
+rate,data = wavfile.read("./code/notes/output.wav")
 
-C4CHORD = C4.overlay(E4,position=0)
-C4CHORD = C4CHORD.overlay(G4,position=0)
-
-C4CHORD.export("./code/notes/C4CHORD.wav",format="wav")
-
-playsound('./code/notes/C4CHORD.wav')"""
+REC.play(data,rate)
+REC.wait()
