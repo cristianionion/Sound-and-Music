@@ -18,3 +18,11 @@
 - Visualized how the compression affected my D1D6D8.wav in Audacity
 - Explored more of Audacity
 - TODO: create different fft compressions to see what gives better results
+
+## 11/6/2024
+- Created normalize.py to normalize audio to avoid clipping
+- Created create_note.py to avoid rewriting same code
+
+## 11/8/2024
+- Added some changes to adaptive_tone_control.py
+- Exploring other signal windows

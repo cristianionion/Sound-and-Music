@@ -6,6 +6,7 @@ from playsound import playsound
 from pydub import AudioSegment
 from scipy import signal
 from scipy.io import wavfile
+from normalize import normalize
 
 
 
@@ -79,13 +80,32 @@ bands = np.array(np.array([
 
 # Play the output of inverse FFT of freqs.
 ifs = np.concatenate([irfft(fs) for fs in freqs])
-wavfile.write("./code/notes/output.wav", 48000, ifs)
+wavfile.write("./code/notes/blackmanharrisoutput.wav", 48000, ifs)
 
 #playsound("./code/notes/output.wav")
 
 playsound("./code/notes/D1D6D8.wav")
 
-rate,data = wavfile.read("./code/notes/output.wav")
+rate,data = wavfile.read("./code/notes/blackmanharrisoutput.wav")
 
 REC.play(data,rate)
 REC.wait()
+
+ifs = normalize(ifs)
+
+wavfile.write("./code/notes/blackmanharrisoutput2.wav", 48000, ifs)
+
+#playsound("./code/notes/output.wav")
+
+playsound("./code/notes/D1D6D8.wav")
+
+rate,data = wavfile.read("./code/notes/blackmanharrisoutput2.wav")
+
+REC.play(data,rate)
+REC.wait()
+
+
+### tone adjustment
+rate,data = wavfile.read("./code/notes/D1D6D8.wav")
+fft = fft(data)
+
