@@ -14,7 +14,7 @@ def create_note(note,frequency):
 
     amplitude = 32767/4
     sample_rate = 48000
-    duration = 2
+    duration = 10
 
     # how to write a wav file using scipy
     # https://docs.scipy.org/doc/scipy/reference/generated/scipy.io.wavfile.write.html

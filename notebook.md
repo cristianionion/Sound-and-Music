@@ -26,3 +26,19 @@
 ## 11/8/2024
 - Added some changes to adaptive_tone_control.py
 - Exploring other signal windows
+
+## 11/14/2024
+- Created audiocompressor.py
+- Ran into a lot of system errors and trying to debug ffmpeg
+
+## 11/15/2024
+- Debugged a lot for ffmpeg, still getting issues with trying to play mp3
+- Going to do audiocompression with wav instead, return to mp3 later
+
+## 11/20/2024
+- Added mu and a law compression for a sample wav file to compare mu and a
+- TODO: do more compression methods and decompression, make them functions 
+
+## 11/21/2024
+- Created audiodecompressor.py, did a and mu law decompression of the compressed files
+- TODO: add more compression,decompression, make them functions
