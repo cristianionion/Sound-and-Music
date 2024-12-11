@@ -42,3 +42,29 @@
 ## 11/21/2024
 - Created audiodecompressor.py, did a and mu law decompression of the compressed files
 - TODO: add more compression,decompression, make them functions
+
+## 11/25/2024
+- Worked on personal project / researched options to accomplish it 
+
+## 11/27/2024
+- Restructured personal project
+
+## 12/1/2024
+- Worked on popgen, added triangle, square, and saw wave methods
+    - to use, run with flag --tri True, or --sqr True, or --saw True
+
+## 12/3/2024
+- almost finished small keyboard (13 keys) for project
+
+## 12//4/2024
+- finished small piano for project, bound piano keys to laptop keys
+
+## 12/8/2024
+- attempted adding a song parameter for full_keyboard in project, many bugs, attempt on a later date
+- solved clicking key errors
+
+## 12/9/2024
+- completed full_keyboard, bound two octaves to laptop keys that are optimal for me for basic playing. TODO: add option for user to customize keybindings
+
+## 12/10/2024
+- cleaned up portfolio, got rid of unneccessary files
